@@ -6,7 +6,7 @@
 /*   By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 21:42:51 by atbicer           #+#    #+#             */
-/*   Updated: 2023/08/27 23:59:00 by atbicer          ###   ########.fr       */
+/*   Updated: 2023/08/28 00:30:38 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,6 +177,32 @@ int	ft_test_bzero(size_t n)
 	printf("Success\n\n");
 	return (0);
 }
+int	ft_test_memcpy(size_t n)
+{
+	char	*ret1;
+	char	*ret2;
+
+	char buffer1[100] = "abcdefghi";
+	char buffer2[100] = "abcdefghi";
+	printf("---FT_MEMCPY TEST---\n");
+	ret1 = memcpy(buffer1, "Hello", n);
+	ret2 = (char *)ft_memcpy(buffer2, "Hello", n);
+	if (DISPLAY_TEST)
+	{
+		printf("%s %s\n", ret1, buffer1);
+		printf("%s %s\n", ret2, buffer2);
+	}
+	for (int i = 0; i < 10; i++)
+	{
+		if (buffer1[i] != buffer2[i])
+		{
+			printf("Failure");
+			return (1);
+		}
+	}
+	printf("Success\n\n");
+	return (0);
+}
 
 int	main(void)
 {
@@ -188,4 +214,7 @@ int	main(void)
 	ft_test_strlen();
 	ft_test_memset(97, 0);
 	ft_test_bzero(5);
+	ft_test_memcpy(0);
+	ft_test_memcpy(5);
+	return (0);
 }
