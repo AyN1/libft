@@ -6,7 +6,7 @@
 /*   By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 21:21:46 by atbicer           #+#    #+#             */
-/*   Updated: 2023/08/27 23:20:07 by atbicer          ###   ########.fr       */
+/*   Updated: 2023/08/27 23:52:52 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 size_t	ft_strlen(const char *s);
 void	*ft_memset(void *b, int c, size_t len);
+void	ft_bzero(void *s, size_t n);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 21:42:51 by atbicer           #+#    #+#             */
-/*   Updated: 2023/08/27 23:34:37 by atbicer          ###   ########.fr       */
+/*   Updated: 2023/08/27 23:59:00 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,30 @@ void	ft_test_memset(int c, size_t len)
 	}
 	printf("Success\n\n");
 }
+int	ft_test_bzero(size_t n)
+{
+	char buffer1[100] = "abcdefghi";
+	char buffer2[100] = "abcdefghi";
+	printf("---FT_BZERO TEST---\n");
+	ft_bzero(buffer1 + 2, n);
+	bzero(buffer2 + 2, n);
+	if (DISPLAY_TEST)
+	{
+		printf("Buffer after ft_bzero: %s\n", buffer1);
+		printf("Buffer after bzero: %s\n", buffer2);
+	}
+	for (int i = 0; i < 10; i++)
+	{
+		if (buffer1[i] != buffer2[i])
+		{
+			printf("Failure: Mismatch at position %d: ft_bzero=%d, bzero=%d\n",
+				i, buffer1[i], buffer2[i]);
+			return (1);
+		}
+	}
+	printf("Success\n\n");
+	return (0);
+}
 
 int	main(void)
 {
@@ -162,5 +186,6 @@ int	main(void)
 	ft_batch_test_1(isascii, ft_isascii, "FT_ISASCII");
 	ft_batch_test_1(isprint, ft_isprint, "FT_ISPRINT");
 	ft_test_strlen();
-	ft_test_memset(97, 10);
+	ft_test_memset(97, 0);
+	ft_test_bzero(5);
 }
