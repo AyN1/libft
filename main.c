@@ -6,7 +6,7 @@
 /*   By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 21:42:51 by atbicer           #+#    #+#             */
-/*   Updated: 2023/08/28 02:30:12 by atbicer          ###   ########.fr       */
+/*   Updated: 2023/08/28 03:57:11 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	ft_batch_test_1(int (*f)(int), int (*ft)(int), const char *str)
 	}
 	printf("Success\n\n");
 }
+
 char	*generate_random_string(size_t length)
 {
 	char	*random_string;
@@ -153,6 +154,7 @@ void	ft_test_memset(int c, size_t len)
 	}
 	printf("Success\n\n");
 }
+
 int	ft_test_bzero(size_t n)
 {
 	char buffer1[100] = "abcdefghi";
@@ -177,6 +179,7 @@ int	ft_test_bzero(size_t n)
 	printf("Success\n\n");
 	return (0);
 }
+
 int	ft_test_memcpy(size_t n)
 {
 	char	*ret1;
@@ -184,39 +187,183 @@ int	ft_test_memcpy(size_t n)
 
 	char buffer1[100] = "abcdefghi";
 	char buffer2[100] = "abcdefghi";
-	printf("---FT_MEMCPY TEST---\n");
 	ret1 = memcpy(buffer1, "Hello", n);
 	ret2 = (char *)ft_memcpy(buffer2, "Hello", n);
 	if (DISPLAY_TEST)
 	{
-		printf("%s %s\n", ret1, buffer1);
-		printf("%s %s\n", ret2, buffer2);
+		printf("libc:\t%s %s\n", ret1, buffer1);
+		printf("ft:\t%s %s\n", ret2, buffer2);
 	}
 	for (int i = 0; i < 10; i++)
 	{
 		if (buffer1[i] != buffer2[i])
 		{
+			if (DISPLAY_FAILED_TEST)
+			{
+				printf("%s %s\n", ret1, buffer1);
+				printf("%s %s\n", ret2, buffer2);
+			}
 			printf("Failure");
 			return (1);
 		}
 	}
-	printf("Success\n\n");
 	return (0);
 }
+
+int	ft_batch_test_memcpy(size_t iteration)
+{
+	int	i;
+
+	i = 0;
+	printf("---FT_MEMCPY TEST---\n");
+	while (i < iteration)
+	{
+		if (ft_test_memcpy(i) != 0)
+		{
+			printf("Failure\n");
+			return (-1);
+		}
+		i++;
+	}
+	printf("Success !\n\n");
+	return (0);
+}
+
 int	ft_test_memmove(size_t n)
 {
 	char	*ret;
 	char	*ft_ret;
 
-	printf("---FT_MEMMOVE TEST---\n");
 	char data1[] = "Hello, World!";
 	char data2[] = "Hello, World!";
-	printf("Original data1: %s\n", data1);
-	printf("Original data2: %s\n\n", data2);
 	ret = memmove(data1 + 5, data1, n);
 	ft_ret = ft_memmove(data2 + 5, data2, n);
-	printf("libc:\t[%s] ret:[%s]\n", data1, ret);
-	printf("ft:\t[%s] ret:[%s]\n", data2, ft_ret);
+	if (DISPLAY_TEST)
+	{
+		printf("libc:\t[%s] ret:[%s]\n", data1, ret);
+		printf("ft:\t[%s] ret:[%s]\n\n", data2, ft_ret);
+	}
+	if (strcmp(data1, data2) != 0)
+	{
+		if (DISPLAY_FAILED_TEST)
+		{
+			printf("libc:\t[%s] ret:[%s]\n", data1, ret);
+			printf("ft:\t[%s] ret:[%s]\n\n", data2, ft_ret);
+		}
+		return (-1);
+	}
+	if (strcmp(ret, ft_ret) != 0)
+	{
+		if (DISPLAY_FAILED_TEST)
+		{
+			printf("libc:\t[%s] ret:[%s]\n", data1, ret);
+			printf("ft:\t[%s] ret:[%s]\n\n", data2, ft_ret);
+		}
+		return (-1);
+	}
+	return (0);
+}
+int	ft_batch_test_memmove(size_t iteration)
+{
+	int	i;
+
+	i = 0;
+	printf("---FT_STRMEMMOVE TEST---\n");
+	while (i < iteration)
+	{
+		if (ft_test_memmove(i) != 0)
+		{
+			printf("Failure\n");
+			return (-1);
+		}
+		i++;
+	}
+	printf("Success !\n\n");
+	return (0);
+}
+
+int	ft_test_strlcpy(void)
+{
+	char	dest1[50];
+	char	dest2[50];
+
+	char src[] = "Test string";
+	size_t result1, result2;
+	printf("---FT_STRLCPY TEST---\n");
+	// Test 1: Normal copy
+	result1 = ft_strlcpy(dest1, src, sizeof(dest1));
+	result2 = strlcpy(dest2, src, sizeof(dest2));
+	if (strcmp(dest1, dest2) != 0 || result1 != result2)
+	{
+		printf("ft_strlcpy Test 1 failed!\n");
+		return (0);
+	}
+	// Test 2: Limited copy
+	result1 = ft_strlcpy(dest1, src, 5);
+	result2 = strlcpy(dest2, src, 5);
+	if (strcmp(dest1, dest2) != 0 || result1 != result2)
+	{
+		printf("ft_strlcpy Test 2 failed!\n");
+		return (0);
+	}
+	// You can add more tests as needed...
+	printf("ft_strlcpy passed all tests.\n\n");
+	return (1);
+}
+
+int	ft_test_strlcat(size_t size)
+{
+	char	*src;
+	int		ret;
+	int		ft_ret;
+
+	char dest[50] = "Hello";
+	char ft_dest[50] = "Hello";
+	src = "World";
+	ret = strlcat(dest, src, size);
+	ft_ret = ft_strlcat(ft_dest, src, size);
+	if (DISPLAY_TEST)
+	{
+		printf("libc:\t%s (%d)\n", dest, ret);
+		printf("ft:\t%s (%d)\n", ft_dest, ft_ret);
+	}
+	if (strcmp(dest, ft_dest) != 0)
+	{
+		if (DISPLAY_FAILED_TEST)
+		{
+			printf("libc:\t%s (%d)\n", dest, ret);
+			printf("ft:\t%s (%d)\n", ft_dest, ft_ret);
+		}
+		return (-1);
+	}
+	if (ret != ft_ret)
+	{
+		if (DISPLAY_FAILED_TEST)
+		{
+			printf("libc:\t%s (%d)\n", dest, ret);
+			printf("ft:\t%s (%d)\n", ft_dest, ft_ret);
+		}
+		return (-1);
+	}
+	return (0);
+}
+
+int	ft_batch_test_strlcat(size_t iteration)
+{
+	int	i;
+
+	i = 0;
+	printf("---FT_STRLCAT TEST---\n");
+	while (i < iteration)
+	{
+		if (ft_test_strlcat(i) != 0)
+		{
+			printf("Failure\n");
+			return (-1);
+		}
+		i++;
+	}
+	printf("Success !\n");
 	return (0);
 }
 
@@ -230,8 +377,9 @@ int	main(void)
 	ft_test_strlen();
 	ft_test_memset(97, 0);
 	ft_test_bzero(5);
-	ft_test_memcpy(0);
-	ft_test_memcpy(5);
-	ft_test_memmove(7);
+	ft_batch_test_memcpy(10);
+	ft_batch_test_memmove(10);
+	ft_test_strlcpy();
+	ft_batch_test_strlcat(15);
 	return (0);
 }
