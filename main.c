@@ -6,7 +6,7 @@
 /*   By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 21:42:51 by atbicer           #+#    #+#             */
-/*   Updated: 2023/08/28 17:55:24 by atbicer          ###   ########.fr       */
+/*   Updated: 2023/08/28 18:54:11 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -391,6 +391,53 @@ int	ft_test_strrchr(void)
 	return (0);
 }
 
+int	ft_test_memcmp(const void *s1, const void *s2, size_t iteration)
+{
+	int		ret;
+	int		ft_ret;
+	size_t	i;
+
+	i = 0;
+	while (i < iteration)
+	{
+		ret = memcmp(s1, s2, i);
+		ft_ret = ft_memcmp(s1, s2, i);
+		if (DISPLAY_TEST)
+		{
+			printf("libc:\t[%d]\n", ret);
+			printf("ft:\t[%d]\n", ft_ret);
+		}
+		if (ret != ft_ret)
+		{
+			if (DISPLAY_FAILED_TEST)
+			{
+				printf("libc:\t[%d]\n", ret);
+				printf("ft:\t[%d]\n", ft_ret);
+			}
+			return (-1);
+		}
+		++i;
+	}
+	return (0);
+}
+
+int	ft_batch_test_memcmp(size_t iteration)
+{
+	int	ret;
+
+	printf("---FT_MEMCMP TEST---\n");
+	if ((ft_test_memcmp("test", "test", iteration)) != 0)
+		return (printf("Failure\n"));
+	if ((ft_test_memcmp("lina", "linaz", iteration)) != 0)
+		return (printf("Failure\n"));
+	if ((ft_test_memcmp("abcde", "abcdef", iteration)) != 0)
+		return (printf("Failure\n"));
+	if ((ft_test_memcmp("123123123", "123123123f", iteration)) != 0)
+		return (printf("Failure\n"));
+	printf("Succes\n\n");
+	return (0);
+}
+
 int	main(void)
 {
 	ft_batch_test_1(isalpha, ft_isalpha, "FT_ISALPHA");
@@ -409,5 +456,6 @@ int	main(void)
 	ft_batch_test_1(tolower, ft_tolower, "FT_TOLOWER");
 	ft_test_strchr();
 	ft_test_strrchr();
+	ft_batch_test_memcmp(10);
 	return (0);
 }
