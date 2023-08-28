@@ -6,7 +6,7 @@
 /*   By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 04:39:43 by atbicer           #+#    #+#             */
-/*   Updated: 2023/08/28 04:46:07 by atbicer          ###   ########.fr       */
+/*   Updated: 2023/08/28 04:52:59 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,7 @@ char	*ft_strchr(const char *s, int c)
 {
 	while (*s && *s != c)
 		s++;
+	if (!*s)
+		return (NULL);
 	return ((char *)s);
 }
