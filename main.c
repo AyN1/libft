@@ -6,7 +6,7 @@
 /*   By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 21:42:51 by atbicer           #+#    #+#             */
-/*   Updated: 2023/08/28 18:54:11 by atbicer          ###   ########.fr       */
+/*   Updated: 2023/08/28 21:01:04 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -438,6 +438,45 @@ int	ft_batch_test_memcmp(size_t iteration)
 	return (0);
 }
 
+int	ft_test_strnstr(char *s1, char *s2, size_t size)
+{
+	char	*ret;
+	char	*ft_ret;
+	int		diff;
+
+	while (size--)
+	{
+		ret = strnstr(s1, s2, size);
+		ft_ret = ft_strnstr(s1, s2, size);
+		if (!(!ret || !ft_ret))
+			diff = strcmp(ret, ft_ret);
+		if (diff)
+		{
+			if (DISPLAY_FAILED_TEST)
+			{
+				printf("test: [%s] [%s] [%zu]\n", s1, s2, size);
+				printf("libc:\t[%s]\n", ret);
+				printf("ft:\t[%s]\n", ft_ret);
+			}
+			return (-1);
+		}
+	}
+	return (0);
+}
+
+int	ft_batch_test_strnstr(void)
+{
+	int	ret;
+
+	printf("---FT_STRNSTR TEST---\n");
+	if ((ft_test_strnstr("lorem", "rem", 13)) != 0)
+		return (printf("Failure\n"));
+	if ((ft_test_strnstr("aaabaaaa", "aaaa", 13)) != 0)
+		return (printf("Failure\n"));
+	printf("Succes\n\n");
+	return (0);
+}
+
 int	main(void)
 {
 	ft_batch_test_1(isalpha, ft_isalpha, "FT_ISALPHA");
@@ -457,5 +496,6 @@ int	main(void)
 	ft_test_strchr();
 	ft_test_strrchr();
 	ft_batch_test_memcmp(10);
+	ft_batch_test_strnstr();
 	return (0);
 }
