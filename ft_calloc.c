@@ -1,43 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/28 21:03:02 by atbicer           #+#    #+#             */
-/*   Updated: 2023/08/29 00:26:22 by atbicer          ###   ########.fr       */
+/*   Created: 2023/08/28 23:06:12 by atbicer           #+#    #+#             */
+/*   Updated: 2023/08/28 23:18:13 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_isspace(char c)
+void	*ft_calloc(size_t count, size_t size)
 {
-	if (c >= 9 && c <= 13)
-		return (1);
-	else if (c == ' ')
-		return (1);
-	else
-		return (0);
-}
+	void	*ptr;
 
-int	ft_atoi(const char *str)
-{
-	int		i;
-	long	nb;
-	int		sign;
-
-	i = 0;
-	nb = 0;
-	sign = 1;
-	while (ft_isspace(str[i]))
-		++i;
-	if (str[i] == '-')
-		sign = -1;
-	if (str[i] == '+' || str[i] == '-')
-		++i;
-	while (ft_isdigit(str[i]))
-		nb = nb * 10 + (str[i++] - 48);
-	return (nb * sign);
+	ptr = malloc(count * size);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, (count * size));
+	return (ptr);
 }
