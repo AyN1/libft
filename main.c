@@ -6,7 +6,7 @@
 /*   By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 21:42:51 by atbicer           #+#    #+#             */
-/*   Updated: 2023/08/28 00:30:38 by atbicer          ###   ########.fr       */
+/*   Updated: 2023/08/28 02:30:12 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,6 +203,22 @@ int	ft_test_memcpy(size_t n)
 	printf("Success\n\n");
 	return (0);
 }
+int	ft_test_memmove(size_t n)
+{
+	char	*ret;
+	char	*ft_ret;
+
+	printf("---FT_MEMMOVE TEST---\n");
+	char data1[] = "Hello, World!";
+	char data2[] = "Hello, World!";
+	printf("Original data1: %s\n", data1);
+	printf("Original data2: %s\n\n", data2);
+	ret = memmove(data1 + 5, data1, n);
+	ft_ret = ft_memmove(data2 + 5, data2, n);
+	printf("libc:\t[%s] ret:[%s]\n", data1, ret);
+	printf("ft:\t[%s] ret:[%s]\n", data2, ft_ret);
+	return (0);
+}
 
 int	main(void)
 {
@@ -216,5 +232,6 @@ int	main(void)
 	ft_test_bzero(5);
 	ft_test_memcpy(0);
 	ft_test_memcpy(5);
+	ft_test_memmove(7);
 	return (0);
 }
