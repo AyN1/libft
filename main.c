@@ -6,7 +6,7 @@
 /*   By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 21:42:51 by atbicer           #+#    #+#             */
-/*   Updated: 2023/08/28 03:57:11 by atbicer          ###   ########.fr       */
+/*   Updated: 2023/08/28 04:47:24 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char	*generate_random_string(size_t length)
 	return (random_string);
 }
 
-void	ft_test_strlen(void)
+void	ft_test_strlen(int num_iterations)
 {
 	char	*random_str;
 	size_t	original_len;
@@ -95,8 +95,7 @@ void	ft_test_strlen(void)
 
 	failure = 0;
 	printf("---FT_STRLEN TEST---\n");
-	srand(time(NULL));       // Seed for random number generation
-	int num_iterations = 10; // Number of test iterations
+	srand(time(NULL)); // Seed for random number generation
 	for (int i = 0; i < num_iterations; i++)
 	{
 		random_length = rand() % 50;
@@ -363,7 +362,15 @@ int	ft_batch_test_strlcat(size_t iteration)
 		}
 		i++;
 	}
-	printf("Success !\n");
+	printf("Success !\n\n");
+	return (0);
+}
+
+int	ft_test_strchr(void)
+{
+	char buff[] = "Hello This Is A Test";
+	printf("libc: \t[%s]\n", strchr(buff, 's'));
+	printf("ft:\t[%s]\n", ft_strchr(buff, 's'));
 	return (0);
 }
 
@@ -374,12 +381,15 @@ int	main(void)
 	ft_batch_test_1(isalnum, ft_isalnum, "FT_ISALNUM");
 	ft_batch_test_1(isascii, ft_isascii, "FT_ISASCII");
 	ft_batch_test_1(isprint, ft_isprint, "FT_ISPRINT");
-	ft_test_strlen();
+	ft_test_strlen(900);
 	ft_test_memset(97, 0);
 	ft_test_bzero(5);
 	ft_batch_test_memcpy(10);
 	ft_batch_test_memmove(10);
 	ft_test_strlcpy();
 	ft_batch_test_strlcat(15);
+	ft_batch_test_1(toupper, ft_toupper, "FT_TOUPPER");
+	ft_batch_test_1(tolower, ft_tolower, "FT_TOLOWER");
+	ft_test_strchr();
 	return (0);
 }
