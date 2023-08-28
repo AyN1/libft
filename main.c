@@ -6,7 +6,7 @@
 /*   By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 21:42:51 by atbicer           #+#    #+#             */
-/*   Updated: 2023/08/28 04:58:50 by atbicer          ###   ########.fr       */
+/*   Updated: 2023/08/28 05:45:02 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -368,19 +368,19 @@ int	ft_batch_test_strlcat(size_t iteration)
 
 int	ft_test_strchr(void)
 {
-	char buff[] = "Hello This Is A Test";
+	char buff[] = "tripouille";
 	printf("---FT_STRCHR TEST---\n");
-	printf("libc: \t[%s]\n", strchr(buff, 'T'));
-	printf("ft:\t[%s]\n\n", ft_strchr(buff, 'T'));
+	printf("libc: \t[%s]\n", strchr(buff, 't' + 256));
+	printf("ft:\t[%s]\n\n", ft_strchr(buff, 't' + 256));
 	return (0);
 }
 
 int	ft_test_strrchr(void)
 {
-	char buff[] = "Hello This Is A Test";
+	char buff[] = "bonjour";
 	printf("---FT_STRRCHR TEST---\n");
-	printf("libc: \t[%s]\n", strrchr(buff, 'T'));
-	printf("ft:\t[%s]\n\n", ft_strrchr(buff, 'T'));
+	printf("libc: \t[%s]\n", strrchr(buff, 0));
+	printf("ft:\t[%s]\n\n", ft_strrchr(buff, 0));
 	return (0);
 }
 

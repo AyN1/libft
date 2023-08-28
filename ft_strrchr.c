@@ -6,7 +6,7 @@
 /*   By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 04:48:31 by atbicer           #+#    #+#             */
-/*   Updated: 2023/08/28 04:57:15 by atbicer          ###   ########.fr       */
+/*   Updated: 2023/08/28 05:46:57 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@ char	*ft_strrchr(const char *s, int c)
 	size_t	len;
 
 	len = ft_strlen(s);
+	c = (unsigned char)c;
+	if (!c)
+		return ((char *)&s[len]);
 	while (len--)
 	{
 		if (s[len] == c)
