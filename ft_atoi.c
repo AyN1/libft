@@ -6,13 +6,13 @@
 /*   By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 21:03:02 by atbicer           #+#    #+#             */
-/*   Updated: 2023/08/28 22:30:52 by atbicer          ###   ########.fr       */
+/*   Updated: 2023/08/28 22:31:35 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isspace(char c)
+static int	ft_isspace(char c)
 {
 	if (c >= 9 && c <= 13)
 		return (1);
@@ -24,9 +24,9 @@ int	ft_isspace(char c)
 
 int	ft_atoi(const char *str)
 {
-	int		i;
-	long	nb;
-	int		sign;
+	int i;
+	long nb;
+	int sign;
 
 	i = 0;
 	nb = 0;
@@ -41,14 +41,3 @@ int	ft_atoi(const char *str)
 		nb = nb * 10 + (str[i++] - 48);
 	return (nb * sign);
 }
-
-// #include <stdio.h>
-// #include <stdlib.h>
-
-// int	main(void)
-// {
-// 	printf("libc:\t%d\n", atoi("9223372036854775808"));
-// 	printf("ft:\t%d\n\n", ft_atoi("9223372036854775808"));
-// 	printf("libc:\t%d\n", atoi("-92233"));
-// 	printf("ft:\t%d\n\n", ft_atoi("-92233"));
-// }
