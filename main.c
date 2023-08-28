@@ -6,7 +6,7 @@
 /*   By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 21:42:51 by atbicer           #+#    #+#             */
-/*   Updated: 2023/08/28 05:45:02 by atbicer          ###   ########.fr       */
+/*   Updated: 2023/08/28 17:55:24 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -283,13 +283,12 @@ int	ft_batch_test_memmove(size_t iteration)
 
 int	ft_test_strlcpy(void)
 {
-	char	dest1[50];
-	char	dest2[50];
+	char	dest1[256];
+	char	dest2[256];
 
 	char src[] = "Test string";
 	size_t result1, result2;
 	printf("---FT_STRLCPY TEST---\n");
-	// Test 1: Normal copy
 	result1 = ft_strlcpy(dest1, src, sizeof(dest1));
 	result2 = strlcpy(dest2, src, sizeof(dest2));
 	if (strcmp(dest1, dest2) != 0 || result1 != result2)
@@ -305,6 +304,14 @@ int	ft_test_strlcpy(void)
 		printf("ft_strlcpy Test 2 failed!\n");
 		return (0);
 	}
+	// Test 3: 0 size
+	result1 = ft_strlcpy(dest1, "aaa", 0);
+	result2 = strlcpy(dest2, "aaa", 0);
+	if (strcmp(dest1, dest2) != 0 || result1 != result2)
+	{
+		printf("ft_strlcpy Test 1 failed!\n");
+		return (0);
+	}
 	// You can add more tests as needed...
 	printf("ft_strlcpy passed all tests.\n\n");
 	return (1);
@@ -316,8 +323,8 @@ int	ft_test_strlcat(size_t size)
 	int		ret;
 	int		ft_ret;
 
-	char dest[50] = "Hello";
-	char ft_dest[50] = "Hello";
+	char dest[256] = "Hello";
+	char ft_dest[256] = "Hello";
 	src = "World";
 	ret = strlcat(dest, src, size);
 	ft_ret = ft_strlcat(ft_dest, src, size);
