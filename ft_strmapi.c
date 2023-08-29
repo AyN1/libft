@@ -6,7 +6,7 @@
 /*   By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 03:32:31 by atbicer           #+#    #+#             */
-/*   Updated: 2023/08/29 04:14:27 by atbicer          ###   ########.fr       */
+/*   Updated: 2023/08/29 04:37:43 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 
 	i = 0;
 	strmapi = ft_calloc(ft_strlen(s) + 1, sizeof(char));
+	if (!strmapi)
+		return (NULL);
 	while (s[i])
 	{
 		strmapi[i] = f(i, s[i]);
