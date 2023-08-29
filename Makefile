@@ -11,23 +11,23 @@ SRCS	=	ft_isdigit.c ft_strlen.c ft_bzero.c ft_isascii.c ft_memcpy.c \
 			ft_strlcpy.c ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c \
 			ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c \
 			ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c \
-			ft_split.c ft_itoa.c ft_strmapi.c
+			ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c
 MY_OBJECTS = $(SRCS:.c=.o)
 
 #Rules
 all: $(NAME)
 
 $(NAME): $(MY_OBJECTS)
-	ar rcs $(NAME) $(MY_OBJECTS)
+	@ar rcs $(NAME) $(MY_OBJECTS)
 
 test: $(NAME)
 	@gcc $(NAME) main.c && clear && ./a.out
 
 clean:
-	rm -f $(MY_OBJECTS)
+	@rm -f $(MY_OBJECTS)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
