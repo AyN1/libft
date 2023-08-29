@@ -6,7 +6,7 @@
 /*   By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 00:45:35 by atbicer           #+#    #+#             */
-/*   Updated: 2023/08/29 01:57:44 by atbicer          ###   ########.fr       */
+/*   Updated: 2023/08/29 02:48:15 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char *join;
-	size_t total_size;
+	char	*join;
+	size_t	total_size;
 
 	if (!s1 || !s2)
 		return (NULL);

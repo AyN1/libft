@@ -6,7 +6,7 @@
 /*   By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 00:27:00 by atbicer           #+#    #+#             */
-/*   Updated: 2023/08/29 01:57:28 by atbicer          ###   ########.fr       */
+/*   Updated: 2023/08/29 02:48:51 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char *substr;
-	size_t len_s;
+	char	*substr;
+	size_t	len_s;
 
 	if (!s)
 		return (NULL);
