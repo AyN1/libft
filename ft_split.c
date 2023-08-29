@@ -6,7 +6,7 @@
 /*   By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 06:15:55 by atbicer           #+#    #+#             */
-/*   Updated: 2023/08/29 02:14:48 by atbicer          ###   ########.fr       */
+/*   Updated: 2023/08/29 05:08:00 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,17 @@ static int	ft_count_word(char const *str, char c)
 	return (count_word);
 }
 
+static void	*ft_free_all(char **split, int n)
+{
+	while (n >= 0)
+	{
+		free(split[n]);
+		n--;
+	}
+	free(split);
+	return (NULL);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**split;
@@ -75,7 +86,7 @@ char	**ft_split(char const *s, char c)
 			++i;
 		split[n] = ft_strsplitdup(s + i, c);
 		if (!split[n])
-			return (NULL);
+			return (ft_free_all(split, n));
 		while (s[i] != c && s[i])
 			++i;
 		++n;
