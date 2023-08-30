@@ -6,7 +6,7 @@
 #    By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/29 04:40:04 by atbicer           #+#    #+#              #
-#    Updated: 2023/08/29 04:49:15 by atbicer          ###   ########.fr        #
+#    Updated: 2023/08/30 03:46:37 by atbicer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,19 +25,27 @@ SRCS	=	ft_isdigit.c ft_strlen.c ft_bzero.c ft_isascii.c ft_memcpy.c \
 			ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c \
 			ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c \
 			ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
-MY_OBJECTS = $(SRCS:.c=.o)
+
+OBJECTS = $(SRCS:.c=.o)
+
+BONUS = ft_lstnew.c
+
+BONUS_OBJ = $(SRCS:.c=.o) $(BANANA:.c=.o)
 
 #Rules
 all: $(NAME)
 
-$(NAME): $(MY_OBJECTS)
-	@ar rcs $(NAME) $(MY_OBJECTS)
+$(NAME): $(OBJECTS)
+	@ar rcs $(NAME) $(OBJECTS)
+
+bonus: $(BONUS_OBJ)
+	ar rcs $(NAME) $(BONUS_OBJ)
 
 test: $(NAME)
 	@gcc $(NAME) main.c && clear && ./a.out
 
 clean:
-	@rm -f $(MY_OBJECTS)
+	@rm -f $(OBJECTS)
 
 fclean: clean
 	@rm -f $(NAME)
