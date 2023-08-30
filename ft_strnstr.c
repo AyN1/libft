@@ -6,7 +6,7 @@
 /*   By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 19:00:48 by atbicer           #+#    #+#             */
-/*   Updated: 2023/08/28 21:00:42 by atbicer          ###   ########.fr       */
+/*   Updated: 2023/08/30 03:23:49 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	j = 0;
 	if (!*needle)
 		return ((char *)haystack);
-	while (len && haystack[i])
+	while (i < len && haystack[i])
 	{
-		while (len-- && haystack[i + j] == needle[j])
+		while (i + j < len && haystack[i + j] == needle[j])
 		{
 			if (j == ft_strlen(needle) - 1)
 				return ((char *)haystack + i);
