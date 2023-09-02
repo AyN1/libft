@@ -6,7 +6,7 @@
 #    By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/29 04:40:04 by atbicer           #+#    #+#              #
-#    Updated: 2023/08/30 03:46:37 by atbicer          ###   ########.fr        #
+#    Updated: 2023/08/31 01:08:27 by atbicer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ OBJECTS = $(SRCS:.c=.o)
 
 BONUS = ft_lstnew.c
 
-BONUS_OBJ = $(SRCS:.c=.o) $(BANANA:.c=.o)
+BONUS_OBJ = $(SRCS:.c=.o) $(BONUS:.c=.o)
 
 #Rules
 all: $(NAME)

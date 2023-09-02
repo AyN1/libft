@@ -6,7 +6,7 @@
 /*   By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 21:21:46 by atbicer           #+#    #+#             */
-/*   Updated: 2023/08/30 03:48:04 by atbicer          ###   ########.fr       */
+/*   Updated: 2023/08/30 05:55:19 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
+t_list				*ft_lstnew(void *content);
 
 #endif
