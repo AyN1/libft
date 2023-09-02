@@ -38,7 +38,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	len = ft_strlen(s1) - 1;
 	while (s1[i] && ft_check_charset(s1[i], set) == 1)
 		++i;
-	while (s1[i] && len >= 0 && ft_check_charset(s1[len], set) == 1)
+	while (s1[i] && len > 0 && ft_check_charset(s1[len], set) == 1)
 		--len;
 	len = len + 1 - i;
 	trim = ft_calloc(len + 1, sizeof(char));

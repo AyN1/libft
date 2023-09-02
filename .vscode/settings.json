@@ -10,6 +10,7 @@
 		"unordered_map": "c",
 		"vector": "c",
 		"string.h": "c",
-		"stdio.h": "c"
+		"stdio.h": "c",
+		"libft.h": "c"
 	}
 }

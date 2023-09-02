@@ -21,6 +21,6 @@ char	*ft_strdup(const char *s1)
 	str = ft_calloc(len + 1, sizeof(char));
 	if (!str)
 		return (NULL);
-	ft_strlcpy(str, s1, len + 1); // try with memcpy
+	ft_strlcpy(str, s1, len + 1);
 	return (str);
 }
