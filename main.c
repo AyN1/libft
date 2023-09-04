@@ -6,7 +6,7 @@
 /*   By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 21:42:51 by atbicer           #+#    #+#             */
-/*   Updated: 2023/08/28 21:01:04 by atbicer          ###   ########.fr       */
+/*   Updated: 2023/09/03 04:06:21 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,7 +211,7 @@ int	ft_test_memcpy(size_t n)
 
 int	ft_batch_test_memcpy(size_t iteration)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	printf("---FT_MEMCPY TEST---\n");
@@ -264,7 +264,7 @@ int	ft_test_memmove(size_t n)
 }
 int	ft_batch_test_memmove(size_t iteration)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	printf("---FT_STRMEMMOVE TEST---\n");
@@ -356,7 +356,7 @@ int	ft_test_strlcat(size_t size)
 
 int	ft_batch_test_strlcat(size_t iteration)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	printf("---FT_STRLCAT TEST---\n");
@@ -423,8 +423,6 @@ int	ft_test_memcmp(const void *s1, const void *s2, size_t iteration)
 
 int	ft_batch_test_memcmp(size_t iteration)
 {
-	int	ret;
-
 	printf("---FT_MEMCMP TEST---\n");
 	if ((ft_test_memcmp("test", "test", iteration)) != 0)
 		return (printf("Failure\n"));
@@ -466,8 +464,6 @@ int	ft_test_strnstr(char *s1, char *s2, size_t size)
 
 int	ft_batch_test_strnstr(void)
 {
-	int	ret;
-
 	printf("---FT_STRNSTR TEST---\n");
 	if ((ft_test_strnstr("lorem", "rem", 13)) != 0)
 		return (printf("Failure\n"));
