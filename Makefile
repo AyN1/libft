@@ -6,7 +6,7 @@
 #    By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/29 04:40:04 by atbicer           #+#    #+#              #
-#    Updated: 2023/09/17 13:46:07 by atbicer          ###   ########.fr        #
+#    Updated: 2023/09/21 19:30:57 by atbicer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,9 @@ bonus: $(BONUS_OBJ)
 
 test: $(NAME)
 	@gcc $(NAME) main.c && clear && ./a.out
+
+btest:
+	@clear && gcc bmain.c -o bmain libft.a && ./bmain
 
 clean:
 	@rm -f $(OBJECTS)
