@@ -48,9 +48,11 @@ btest:
 	@clear && gcc bmain.c -o bmain libft.a && ./bmain
 
 clean:
+	@echo "running clean"
 	@rm -f $(OBJECTS)
 
 fclean: clean
+	@echo "running fclean"
 	@rm -f $(NAME)
 
 re: fclean all
