@@ -110,3 +110,8 @@ char	**ft_split(char const *s, char c)
 // 	while (ret[i])
 // 		printf("[%s] ", ret[i++]);
 // }
+
+/*
+** 51: iterate until \0 or C is found
+** 53: skip C
+*/
