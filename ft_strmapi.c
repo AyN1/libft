@@ -6,7 +6,7 @@
 /*   By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 03:32:31 by atbicer           #+#    #+#             */
-/*   Updated: 2023/08/29 04:37:43 by atbicer          ###   ########.fr       */
+/*   Updated: 2023/12/07 19:44:39 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char	*strmapi;
 	size_t	i;
 
+	if (!s || !f)
+		return (NULL);
 	i = 0;
 	strmapi = ft_calloc(ft_strlen(s) + 1, sizeof(char));
 	if (!strmapi)
@@ -43,7 +45,7 @@ int	main(void)
 {
 	char	*mapi;
 
-	mapi = ft_strmapi("Hello This Is A test", ft_even_index_to_upper);
+	mapi = ft_strmapi("Hello This Is A Test", ft_even_index_to_upper);
 	printf("[%s]", mapi);
 }
 */

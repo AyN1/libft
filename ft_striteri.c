@@ -6,7 +6,7 @@
 /*   By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 04:18:15 by atbicer           #+#    #+#             */
-/*   Updated: 2023/08/29 04:33:08 by atbicer          ###   ########.fr       */
+/*   Updated: 2023/12/07 19:42:24 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
 	size_t	i;
 
+	if (!s || !f)
+		return ;
 	i = 0;
 	while (s[i])
 	{
@@ -36,7 +38,7 @@ int	main(void)
 {
 	char iteri[] = "abcdefg";
 	printf("before:\t[%s]\n", iteri);
-	ft_striteri(iteri, ft_even_index_to_upper);
+	ft_striteri(iteri, NULL);
 	printf("after:\t[%s]\n", iteri);
 }
 */
