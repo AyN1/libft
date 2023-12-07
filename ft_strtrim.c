@@ -6,7 +6,7 @@
 /*   By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 02:14:19 by atbicer           #+#    #+#             */
-/*   Updated: 2023/12/07 19:24:53 by atbicer          ###   ########.fr       */
+/*   Updated: 2023/12/07 19:48:30 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static int	ft_check_charset(char c, char const *charset)
 	}
 	return (0);
 }
-#include <stdio.h>
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
