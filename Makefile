@@ -6,7 +6,7 @@
 #    By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/29 04:40:04 by atbicer           #+#    #+#              #
-#    Updated: 2023/12/26 20:32:01 by atbicer          ###   ########.fr        #
+#    Updated: 2023/12/26 22:13:50 by atbicer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRCS	=	ft_isdigit.c ft_strlen.c ft_bzero.c ft_isascii.c ft_memcpy.c \
 OBJECTS = $(SRCS:.c=.o)
 
 BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
-		ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c
+		ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
 
 BONUS_OBJ = $(SRCS:.c=.o) $(BONUS:.c=.o)
@@ -41,7 +41,7 @@ $(NAME): $(OBJECTS)
 	@ar rcs $(NAME) $(OBJECTS)
 
 bonus: $(BONUS_OBJ)
-	ar rcs $(NAME) $(BONUS_OBJ)
+	@ar rcs $(NAME) $(BONUS_OBJ)
 
 test: $(NAME)
 	@gcc $(NAME) main.c && clear && ./a.out

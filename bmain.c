@@ -6,7 +6,7 @@
 /*   By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 18:56:28 by atbicer           #+#    #+#             */
-/*   Updated: 2023/12/26 19:55:09 by atbicer          ###   ########.fr       */
+/*   Updated: 2023/12/26 21:46:43 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,25 +46,24 @@ int	main(int argc, char *argv[])
 	current = malloc(sizeof(t_list));
 	current->content = (int *)98;
 	current->next = NULL;
-	head->next = current;
+	ft_lstadd_back(&head, current);
 	//
 	current = malloc(sizeof(t_list));
 	current->content = (int *)3;
 	current->next = NULL;
-	head->next->next = current;
+	ft_lstadd_back(&head, current);
 	//
 	current = malloc(sizeof(t_list));
 	current->content = (int *)22;
 	current->next = NULL;
-	head->next->next->next = current;
+	ft_lstadd_back(&head, current);
 	//
 	current = malloc(sizeof(t_list));
 	current->content = (int *)66;
 	current->next = NULL;
-	head->next->next->next->next = current;
+	ft_lstadd_back(&head, current);
+	//fr
 	print_data_course(head);
-	head = ft_lstlast(NULL);
-	printf("last: %d \n", (int)head->content);
 	printf("size: %d\n", ft_lstsize(head));
 	return (0);
 }
