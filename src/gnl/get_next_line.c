@@ -6,7 +6,7 @@
 /*   By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 21:11:22 by atbicer           #+#    #+#             */
-/*   Updated: 2024/10/11 22:40:08 by atbicer          ###   ########.fr       */
+/*   Updated: 2024/10/11 23:08:04 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char	*read_and_join(int fd, char *str[])
 
 char	*get_next_line(int fd)
 {
-	static char	*str[512] = {NULL};
+	static char	*str[OPEN_MAX] = {NULL};
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, " ", 0) < 0)
 		return (ft_free(&str[fd]));

@@ -6,7 +6,7 @@
 /*   By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 21:12:51 by atbicer           #+#    #+#             */
-/*   Updated: 2024/10/11 22:42:50 by atbicer          ###   ########.fr       */
+/*   Updated: 2024/10/11 23:08:32 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # if BUFFER_SIZE > 8000000
 #  undef BUFFER_SIZE
 #  define BUFFER_SIZE 8000000
+# endif
+
+# ifndef OPEN_MAX
+#  define OPEN_MAX 1024
 # endif
 
 # include "libft.h"
