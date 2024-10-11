@@ -6,7 +6,7 @@
 #    By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/29 04:40:04 by atbicer           #+#    #+#              #
-#    Updated: 2024/10/11 22:39:44 by atbicer          ###   ########.fr        #
+#    Updated: 2024/10/11 23:14:01 by atbicer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,12 +62,13 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
-	@echo "running clean"
 	@$(RM) $(OBJ_DIR)
+	@echo "$(GREEN)Object files deleted!$(RESET)"
 
 fclean: clean
-	@echo "running fclean"
 	@$(RM) $(NAME)
+	@echo "$(GREEN)$(NAME) deleted!$(RESET)"
+
 
 re: fclean all
 
