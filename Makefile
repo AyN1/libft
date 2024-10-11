@@ -6,7 +6,7 @@
 #    By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/29 04:40:04 by atbicer           #+#    #+#              #
-#    Updated: 2024/10/11 22:27:49 by atbicer          ###   ########.fr        #
+#    Updated: 2024/10/11 22:39:44 by atbicer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRC_OUTPUT = ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 SRC_LIST = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
            ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 SRC_PRINTF = ft_printf.c ft_print_digit.c ft_print_ptr.c ft_print_str.c
+SRC_GNL = get_next_line.c
 
 # Combine all source files
 SRCS = $(addprefix $(SRC_DIR)/char/, $(SRC_CHAR)) \
@@ -43,7 +44,8 @@ SRCS = $(addprefix $(SRC_DIR)/char/, $(SRC_CHAR)) \
        $(addprefix $(SRC_DIR)/conversion/, $(SRC_CONVERSION)) \
        $(addprefix $(SRC_DIR)/output/, $(SRC_OUTPUT)) \
        $(addprefix $(SRC_DIR)/list/, $(SRC_LIST)) \
-       $(addprefix $(SRC_DIR)/printf/, $(SRC_PRINTF))
+       $(addprefix $(SRC_DIR)/printf/, $(SRC_PRINTF)) \
+	   $(addprefix $(SRC_DIR)/gnl/, $(SRC_GNL))
 
 # Object files
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
