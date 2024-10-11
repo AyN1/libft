@@ -12,8 +12,8 @@
 
 #Variables
 NAME = libft.a
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CC = clang
+CFLAGS = -Wall -Wextra -Werror -Iinclude
 RM = rm -rf
 
 #PATHS
@@ -26,32 +26,26 @@ SRCS	=	ft_isdigit.c ft_strlen.c ft_bzero.c ft_isascii.c ft_memcpy.c \
 			ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c \
 			ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
-OBJECTS = $(SRCS:.c=.o)
-
 BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 		ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
+FT_PRINTF = ft_printf.c ft_print_digit.c ft_print_ptr.c ft_print_str.c
 
-BONUS_OBJ = $(SRCS:.c=.o) $(BONUS:.c=.o)
+OBJECTS = $(SRCS:.c=.o) $(BONUS:.c=.o) $(FT_PRINTF:.c=.o)
 
 #Rules
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	@ar rcs $(NAME) $(OBJECTS)
+	@echo "libft compiled"
 
-bonus: $(BONUS_OBJ)
-	@ar rcs $(NAME) $(BONUS_OBJ)
-
-test: $(NAME)
-	@gcc $(NAME) main.c && clear && ./a.out
-
-btest:
-	@clear && gcc bmain.c -o bmain libft.a && ./bmain
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	@echo "running clean"
-	@rm -f $(OBJECTS)
+	@rm -f $(OBJECTS) $(BONUS_OBJ)
 
 fclean: clean
 	@echo "running fclean"
