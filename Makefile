@@ -6,50 +6,66 @@
 #    By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/29 04:40:04 by atbicer           #+#    #+#              #
-#    Updated: 2023/12/26 22:13:50 by atbicer          ###   ########.fr        #
+#    Updated: 2024/10/11 22:27:49 by atbicer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#Variables
+# Variables
 NAME = libft.a
 CC = clang
-CFLAGS = -Wall -Wextra -Werror -Iinclude
+CFLAGS = -Wall -Wextra -Werror
+INCLUDE = -Iinclude
 RM = rm -rf
 
-#PATHS
-#VPATH	=	src:src/conversion:src/list:src/memory:src/output:src/string
-SRCS	=	ft_isdigit.c ft_strlen.c ft_bzero.c ft_isascii.c ft_memcpy.c \
-			ft_isprint.c ft_isalpha.c ft_memset.c ft_isalnum.c ft_memmove.c \
-			ft_strlcpy.c ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c \
-			ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c \
-			ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c \
-			ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c \
-			ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
+# Colors
+GREEN = \033[0;32m
+RESET = \033[0m
 
-BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
-		ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
+# Directories
+SRC_DIR = src
+OBJ_DIR = obj
 
-FT_PRINTF = ft_printf.c ft_print_digit.c ft_print_ptr.c ft_print_str.c
+# Source files
+SRC_CHAR = ft_isdigit.c ft_isascii.c ft_isprint.c ft_isalpha.c ft_isalnum.c ft_toupper.c ft_tolower.c
+SRC_STRING = ft_strlen.c ft_strlcpy.c ft_strlcat.c ft_strchr.c ft_strrchr.c ft_strncmp.c ft_strnstr.c \
+             ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_strmapi.c ft_striteri.c
+SRC_MEMORY = ft_bzero.c ft_memcpy.c ft_memset.c ft_memmove.c ft_memchr.c ft_memcmp.c ft_calloc.c
+SRC_CONVERSION = ft_atoi.c ft_itoa.c
+SRC_OUTPUT = ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
+SRC_LIST = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
+           ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
+SRC_PRINTF = ft_printf.c ft_print_digit.c ft_print_ptr.c ft_print_str.c
 
-OBJECTS = $(SRCS:.c=.o) $(BONUS:.c=.o) $(FT_PRINTF:.c=.o)
+# Combine all source files
+SRCS = $(addprefix $(SRC_DIR)/char/, $(SRC_CHAR)) \
+       $(addprefix $(SRC_DIR)/string/, $(SRC_STRING)) \
+       $(addprefix $(SRC_DIR)/memory/, $(SRC_MEMORY)) \
+       $(addprefix $(SRC_DIR)/conversion/, $(SRC_CONVERSION)) \
+       $(addprefix $(SRC_DIR)/output/, $(SRC_OUTPUT)) \
+       $(addprefix $(SRC_DIR)/list/, $(SRC_LIST)) \
+       $(addprefix $(SRC_DIR)/printf/, $(SRC_PRINTF))
 
-#Rules
+# Object files
+OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+
+# Rules
 all: $(NAME)
 
-$(NAME): $(OBJECTS)
-	@ar rcs $(NAME) $(OBJECTS)
-	@echo "libft compiled"
+$(NAME): $(OBJS)
+	@ar rcs $(NAME) $(OBJS)
+	@echo "$(GREEN)libft compiled$(RESET)"
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
 	@echo "running clean"
-	@rm -f $(OBJECTS) $(BONUS_OBJ)
+	@$(RM) $(OBJ_DIR)
 
 fclean: clean
 	@echo "running fclean"
-	@rm -f $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 
