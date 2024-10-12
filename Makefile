@@ -12,7 +12,7 @@
 
 # Variables
 NAME = libft.a
-CC = clang
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 INCLUDE = -Iinclude
 RM = rm -rf

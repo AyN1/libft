@@ -53,7 +53,7 @@ char	*read_and_join(int fd, char *str[])
 {
 	char	buf[BUFFER_SIZE + 1];
 	char	*temp;
-	size_t	ret;
+	ssize_t	ret;
 
 	if (read(fd, buf, 0) < 0)
 		return (ft_free(&str[fd]));
