@@ -55,7 +55,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
-	@echo "$(GREEN)libft compiled$(RESET)"
+	@echo "$(GREEN)libft: libft compiled$(RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
@@ -63,11 +63,11 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 
 clean:
 	@$(RM) $(OBJ_DIR)
-	@echo "$(GREEN)Object files deleted!$(RESET)"
+	@echo "$(GREEN)libft: object files deleted!$(RESET)"
 
 fclean: clean
 	@$(RM) $(NAME)
-	@echo "$(GREEN)$(NAME) deleted!$(RESET)"
+	@echo "$(GREEN)libft: $(NAME) deleted!$(RESET)"
 
 
 re: fclean all
