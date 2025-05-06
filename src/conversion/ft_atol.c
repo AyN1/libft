@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atbicer <atbicer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/28 21:03:02 by atbicer           #+#    #+#             */
-/*   Updated: 2025/05/03 15:14:33 by atbicer          ###   ########.fr       */
+/*   Created: 2025/05/03 15:24:57 by atbicer           #+#    #+#             */
+/*   Updated: 2025/05/03 15:25:39 by atbicer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+long	ft_atol(const char *str) // don't handle overflow and underflow as the original.
 {
 	int		i;
 	long	nb;
@@ -28,6 +28,6 @@ int	ft_atoi(const char *str)
 	if (str[i] == '+' || str[i] == '-')
 		++i;
 	while (ft_isdigit(str[i]))
-		nb = nb * 10 + (str[i++] - 48);
+		nb = nb * 10 + (str[i++] - '0');
 	return (nb * sign);
 }
