@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: atbicer <atbicer@student.42.fr>            +#+  +:+       +#+         #
+#    By: atbicer <atbicer@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/29 04:40:04 by atbicer           #+#    #+#              #
-#    Updated: 2025/05/03 15:30:26 by atbicer          ###   ########.fr        #
+#    Updated: 2025/05/13 05:07:30 by atbicer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,19 +55,20 @@ OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
+	@echo "$(GREEN)Building libft...$(RESET)"
 	@ar rcs $(NAME) $(OBJS)
-	@echo "$(GREEN)libft: libft compiled$(RESET)"
+	@echo "$(GREEN)libft compiled$(RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
-	@echo "$(RED)LIBFT: Cleaning object files...$(RESET)"
+	@echo "$(RED)[LIBFT] Cleaning object files...$(RESET)"
 	@$(RM) $(OBJ_DIR)
 
 fclean: clean
-	@echo "$(RED)LIBFT: Cleaning everything...$(RESET)"
+	@echo "$(RED)[LIBFT] Cleaning everything...$(RESET)"
 	@$(RM) $(NAME)
 
 
